@@ -14,4 +14,41 @@ public class Flight {
         this.passengers = new ArrayList<>();
     }
 
+    public PlaneType getFlightAircraftType(){
+        return this.plane.getPlaneType();
+    }
+
+    public int getFlightBaggageLimit(){
+        return this.plane.getBaggageCapacity();
+    }
+
+    public int getFlightAircraftRange(){
+        return this.plane.getRange();
+    }
+
+    public int getFlightRange(){
+        return this.destination.getDistance();
+    }
+
+    public String getFlightDestination(){
+        return this.destination.getDestination();
+    }
+
+    public int getFlightPassengerCount(){
+        return this.passengers.size();
+    }
+
+    public int getFlightNumber(){
+        return this.flightNumber;
+    }
+
+    public boolean checkAircraftMeetsRange() {
+        if (this.getFlightAircraftRange() > this.getFlightRange())
+        return true;
+        else {
+            return false;
+        }
+    }
+
+
 }
