@@ -11,8 +11,8 @@ public class PlaneTest {
     @Before
 
     public void before(){
-        plane1 = new Plane(PlaneType.AIRBUSA380, 100, 100, 8000 );
-        plane2 = new Plane(PlaneType.BOEING737, 10, 10, 1000 );
+        plane1 = new Plane(PlaneType.AIRBUSA380, 100, 8000 );
+        plane2 = new Plane(PlaneType.BOEING737, 10, 1000 );
     }
 
     @Test
@@ -28,11 +28,6 @@ public class PlaneTest {
     @Test
     public void canGetBaggageCapacity(){
         assertEquals(10, plane2.getBaggageCapacity());
-    }
-
-    @Test
-    public void canGetCargoCapacity(){
-        assertEquals(100, plane1.getCargoCapacity());
     }
 
     @Test

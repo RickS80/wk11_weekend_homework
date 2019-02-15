@@ -1,13 +1,27 @@
+import java.util.ArrayList;
+
 public class Passenger {
 
     private String name;
     private int luggage;
-    private Booking booking;
+    private ArrayList<Booking> bookings;
 
-    public Passenger(String name, int luggage, Booking booking){
+    public Passenger(String name, int luggage){
         this.name = name;
         this.luggage = luggage;
-        this.booking = booking;
+        this.bookings = new ArrayList<>();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getLuggage(){
+        return this.luggage;
+    }
+
+    public int getBookings(){
+        return this.bookings.size();
     }
 
 
