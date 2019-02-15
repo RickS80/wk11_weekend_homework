@@ -6,9 +6,13 @@ import static org.junit.Assert.assertEquals;
 public class FlightTest {
 
     Flight flight;
+    Flight flight2;
     Plane plane1;
     Plane plane2;
     Route route1;
+    Passenger passenger;
+    Booking booking;
+
 
     @Before
 
@@ -17,6 +21,16 @@ public class FlightTest {
         plane2 = new Plane(PlaneType.AIRBUSA220, 10, 2000);
         route1 = new Route("Rome", 2500);
         flight = new Flight(plane1, 109, route1);
+        flight2 = new Flight(plane2, 105, route1);
+        passenger = new Passenger("Rick", 2);
+        booking = new Booking(passenger.getName(), 109,"Rome", 2);
+        passenger.addBooking(booking);
+
+    }
+
+    @Test
+    public void getFlightNumber() {
+        assertEquals(109, flight.getFlightNumber());
     }
 
     @Test
@@ -40,9 +54,21 @@ public class FlightTest {
     }
 
     @Test
+    public void checkAircraftCanReachDestination_true(){
+        assertEquals(true, flight.checkAircraftMeetsRange());
+    }
+
+    @Test
+    public void checkAircraftCanReachDestination_false() {
+        assertEquals(false, flight2.checkAircraftMeetsRange());
+    }
+
+
+    @Test
     public void canGetFlightDestination(){
         assertEquals("Rome", flight.getFlightDestination());
     }
+
 
     @Test
     public void flightStartsWithZeroPassengers(){
@@ -50,27 +76,28 @@ public class FlightTest {
     }
 
     @Test
-    public void getFlightNumber() {
-        assertEquals(109, flight.getFlightNumber());
+    public void verifyPassengerHasBookingOnFlight_pass(){
+        assertEquals(true, flight.verifyPassenger(passenger));
     }
 
     @Test
-    public void checkAircraftCanReachDestination_true(){
-        assertEquals(true, flight.checkAircraftMeetsRange());
+    public void verifyPassengerHasBookingOnFlight_fail(){
+        assertEquals(false, flight2.verifyPassenger(passenger));
     }
+
+
 
     @Test
-    public void checkAircraftCanReachDestination_false() {
-        Flight flight2 = new Flight(plane2, 109, route1);
-        assertEquals(false, flight2.checkAircraftMeetsRange());
+    public void checkInPassengerToFlight(){
+        flight.checkInPassenger(passenger);
+       assertEquals(1, flight.getFlightPassengerCount());
     }
 
 
-//    can get plane range
-//    can get route destination
-//
-//    can get route length
-//    can check plane range > distance from hub
-//    flight starts with zero passengers
+  
+
+//  check booking status.
+//    check total bookings on flight
+//    check outstanding passengers to check in
 
 }

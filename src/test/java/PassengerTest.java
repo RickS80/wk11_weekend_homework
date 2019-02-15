@@ -6,11 +6,13 @@ import static org.junit.Assert.assertEquals;
 public class PassengerTest {
 
     Passenger passenger;
+    Booking booking;
 
     @Before
 
     public void before(){
         passenger = new Passenger("Rick", 2);
+        booking = new Booking(passenger.getName(), 105,"Rome", 1);
     }
 
     @Test
@@ -29,5 +31,12 @@ public class PassengerTest {
 
     }
 
-//    pax can make a new booking
+    @Test
+    public void paxCanAddBooking(){
+        passenger.addBooking(booking);
+        assertEquals(1, passenger.getBookings());
+
+    }
+
+
 }

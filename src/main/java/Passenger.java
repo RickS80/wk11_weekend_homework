@@ -4,7 +4,7 @@ public class Passenger {
 
     private String name;
     private int luggage;
-    private ArrayList<Booking> bookings;
+    public ArrayList<Booking> bookings;
 
     public Passenger(String name, int luggage){
         this.name = name;
@@ -23,6 +23,13 @@ public class Passenger {
     public int getBookings(){
         return this.bookings.size();
     }
+
+    public void addBooking(Booking booking){
+
+        this.bookings.add(booking);
+    }
+
+
 
 
 }
