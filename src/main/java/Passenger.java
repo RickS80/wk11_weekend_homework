@@ -24,6 +24,10 @@ public class Passenger {
         return this.bookings.size();
     }
 
+    public void checkFlightHasSpace(){
+
+    }
+
     public void addBooking(Booking booking){
         this.bookings.add(booking);
     }

@@ -70,6 +70,18 @@ public class Flight {
         }
     }
 
+    public int checkFlightBookings(){
+        ArrayList<Booking> flightbookings = new ArrayList<>();
+        for (Passenger passenger : this.passengers){
+            for (Booking booking : passenger.bookings){
+                if (booking.getBookingFlightNumber() == this.flightNumber){
+                    flightbookings.add(booking);
+                }
+            }
+        }
+        return flightbookings.size();
+    }
+
 
 }
 

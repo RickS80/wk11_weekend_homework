@@ -30,10 +30,6 @@ public class AirlineTest {
         assertEquals(1, airline.getFlights());
     }
 
-    @Test
-    public void bookingsStartEmpty(){
-        assertEquals(0, airline.getBookings());
-    }
 
     @Test
     public void fleetStartsEmpty(){
@@ -51,4 +47,6 @@ public class AirlineTest {
         airline.populateFleet();
         assertEquals(6, airline.getFleetNumber());
     }
+
+
 }
