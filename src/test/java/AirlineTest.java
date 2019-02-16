@@ -9,12 +9,15 @@ public class AirlineTest {
 
     Airline airline;
     Flight flight;
+    Flight flight2;
     Plane plane1;
     Plane plane2;
     Plane plane3;
     Plane plane4;
     Route route1;
     ArrayList<PlaneType> largePlanes;
+    Booking booking;
+    Booking booking2;
 
     @Before
 
@@ -31,6 +34,13 @@ public class AirlineTest {
         largePlanes.add(plane3.getPlaneType());
         route1 = new Route("Rome", 2500);
         flight = new Flight (plane1, 101, route1);
+        flight2 = new Flight (plane2, 103, route1);
+        airline.createFlight(flight);
+        airline.createFlight(flight2);
+        booking = new Booking("Terry", 101,"Rome", 1);
+        booking2 = new Booking("Gary", 103,"Dusseldorf", 1);
+        flight.addBookingToFlight(booking);
+        flight2.addBookingToFlight(booking2);
     }
 
     @Test
@@ -40,8 +50,7 @@ public class AirlineTest {
 
     @Test
     public void canAddFlight(){
-        airline.createFlight(flight);
-        assertEquals(1, airline.getFlights());
+        assertEquals(2, airline.getFlights());
     }
 
 
@@ -72,5 +81,10 @@ public class AirlineTest {
     public void findMostSuitablePlaneForRoute(){
         airline.populateFleet();
         assertEquals("AIRBUSA350", airline.mostSuitablePlane(route1));
+    }
+
+    @Test
+    public void checkTotalBookings(){
+        assertEquals(2, airline.totalBookings());
     }
 }

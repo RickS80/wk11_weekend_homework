@@ -77,40 +77,20 @@ public class Flight {
         }
     }
 
-    public int checkFlightBookings(){
-        ArrayList<Booking> flightbookingsOfCheckInPax = new ArrayList<>();
-        for (Passenger passenger : this.checkedInPassengers){
-            for (Booking booking : passenger.bookings){
-                if (booking.getBookingFlightNumber() == this.flightNumber){
-                    flightbookingsOfCheckInPax.add(booking);
-                }
-            }
-        }
-        return flightbookingsOfCheckInPax.size();
+    public int checkFlightBookings() {
+        return this.flightbookings.size();
     }
 
-    public int checkFlightBookings2(){
-        ArrayList<Booking> bookings = new ArrayList<>();
-        for (Booking booking : this.flightbookings){
-                if (booking.getBookingFlightNumber() == this.flightNumber){
-                    bookings.add(booking);
-                }
-            }
-        return bookings.size();
+    public int checkRemainingSeatsAvailable(){
+        return this.getFlightAircraftType().getCapacityFromEnum() - this.checkFlightBookings();
     }
+
+
 
 
 }
 
 
-
-
-
-
-
-//    public void checkInPassenger(Passenger passenger) {
-//        this.passengers.add(passenger);
-//    }
 
 
 

@@ -90,18 +90,15 @@ public class FlightTest {
 
     @Test
     public void checkFlightBookings(){
-        flight.checkInPassenger(passenger);
         assertEquals(1,flight.checkFlightBookings());
     }
 
+    @Test
+    public void checkAvailableSeats(){
+        flight.addBookingToFlight(booking);
+        flight.addBookingToFlight(booking);
+        assertEquals(497, flight.checkRemainingSeatsAvailable());
+    }
 
-
-
-
-
-
-//    check total bookings on flight
-//    do not allow additional bookings if flight is full
-//    check outstanding passengers to check in
 
 }

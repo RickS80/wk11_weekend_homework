@@ -65,14 +65,14 @@ public class Airline {
             return mostSuitablePlane.name();
     }
 
-    public void addBooking(Booking booking){
-        for (Flight flight : this.flights){
-            if (flight.getFlightNumber() == booking.getBookingFlightNumber()){
-                flight.addBookingToFlight(booking);
-                this.bookings.add(booking);
+    public int totalBookings(){
+        int total = 0;
+        for (Flight flight : this.flights) {
+             total += flight.checkFlightBookings();
             }
+        return total;
         }
-    }
+
 
 
 
