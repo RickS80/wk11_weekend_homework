@@ -1,13 +1,11 @@
 public class Plane {
 
     private PlaneType plane;
-    private int baggageCapacity;
-    private int range;
 
-    public Plane(PlaneType plane, int baggageCapacity, int range){
+
+    public Plane(PlaneType plane){
         this.plane = plane;
-        this.baggageCapacity = baggageCapacity;
-        this.range = range;
+
     }
 
     public PlaneType getPlaneType(){
@@ -15,15 +13,11 @@ public class Plane {
     }
 
     public int getPlaneCapacity(){
-        return this.plane.getValueFromEnum();
-    }
-
-    public int getBaggageCapacity(){
-        return this.baggageCapacity;
+        return this.plane.getCapacityFromEnum();
     }
 
     public int getRange(){
-        return this.range;
+        return this.plane.getRangeFromEnum();
     }
 
 }

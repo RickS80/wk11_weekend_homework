@@ -19,9 +19,6 @@ public class Flight {
         return this.plane.getPlaneType();
     }
 
-    public int getFlightBaggageLimit() {
-        return this.plane.getBaggageCapacity();
-    }
 
     public int getFlightAircraftRange() {
         return this.plane.getRange();

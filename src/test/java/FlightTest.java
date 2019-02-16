@@ -17,8 +17,8 @@ public class FlightTest {
     @Before
 
     public void before(){
-        plane1 = new Plane(PlaneType.AIRBUSA380, 100, 5000);
-        plane2 = new Plane(PlaneType.AIRBUSA220, 10, 2000);
+        plane1 = new Plane(PlaneType.AIRBUSA380);
+        plane2 = new Plane(PlaneType.AIRBUSA220);
         route1 = new Route("Rome", 2500);
         flight = new Flight(plane1, 109, route1);
         flight2 = new Flight(plane2, 105, route1);
@@ -38,14 +38,10 @@ public class FlightTest {
         assertEquals(PlaneType.AIRBUSA380, flight.getFlightAircraftType());
     }
 
-    @Test
-    public void canGetFlightBaggageCapacity(){
-        assertEquals(100, flight.getFlightBaggageLimit());
-    }
 
     @Test
     public void canGetFlightAircraftRange(){
-        assertEquals(5000, flight.getFlightAircraftRange());
+        assertEquals(8000, flight.getFlightAircraftRange());
     }
 
     @Test
@@ -85,8 +81,6 @@ public class FlightTest {
         assertEquals(false, flight2.verifyPassenger(passenger));
     }
 
-
-
     @Test
     public void checkInPassengerToFlight(){
         flight.checkInPassenger(passenger);
@@ -94,10 +88,11 @@ public class FlightTest {
     }
 
 
-  
 
-//  check booking status.
+
+
 //    check total bookings on flight
+//    do not allow additional bookings if flight is full
 //    check outstanding passengers to check in
 
 }
