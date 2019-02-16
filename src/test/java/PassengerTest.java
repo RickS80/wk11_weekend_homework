@@ -33,7 +33,7 @@ public class PassengerTest {
 
     @Test
     public void paxCanAddBooking(){
-        passenger.addBooking(booking);
+        passenger.addBookingToPassenger(booking);
         assertEquals(1, passenger.getBookings());
 
     }

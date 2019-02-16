@@ -42,6 +42,19 @@ public class Airline {
         }
     }
 
+    public ArrayList<PlaneType> checkWhichAircraftMeetsRange(Route route) {
+        ArrayList<PlaneType> acceptablePlanes = new ArrayList<>();
+        for (Plane individualPlane : this.fleet) {
+            if (individualPlane.getRange() > route.getDistance()) {
+                acceptablePlanes.add(individualPlane.getPlaneType());
+            }
+        }
+        return acceptablePlanes;
+    }
+
+
+
+
 
 
 

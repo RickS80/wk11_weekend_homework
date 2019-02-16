@@ -4,14 +4,16 @@ public class Flight {
 
     private Plane plane;
     private int flightNumber;
-    private ArrayList<Passenger> passengers;
+    private ArrayList<Passenger> checkedInPassengers;
+    private ArrayList<Booking> flightbookings;
     private Route destination;
 
     public Flight(Plane plane, int flightNumber, Route destination) {
         this.plane = plane;
         this.flightNumber = flightNumber;
         this.destination = destination;
-        this.passengers = new ArrayList<>();
+        this.checkedInPassengers = new ArrayList<>();
+        this.flightbookings = new ArrayList<>();
 
     }
 
@@ -32,8 +34,12 @@ public class Flight {
         return this.destination.getDestination();
     }
 
+    public void addBookingToFlight(Booking booking){
+        this.flightbookings.add(booking);
+    }
+
     public int getFlightPassengerCount() {
-        return this.passengers.size();
+        return this.checkedInPassengers.size();
     }
 
     public int getFlightNumber() {
@@ -47,6 +53,7 @@ public class Flight {
             return false;
         }
     }
+
 
     public boolean verifyPassenger(Passenger passenger) {
         ArrayList<Passenger> verifiedPassenger = new ArrayList<>();
@@ -66,20 +73,30 @@ public class Flight {
 
     public void checkInPassenger(Passenger passenger) {
         if (this.verifyPassenger(passenger) == true ) {
-            this.passengers.add(passenger);
+            this.checkedInPassengers.add(passenger);
         }
     }
 
     public int checkFlightBookings(){
-        ArrayList<Booking> flightbookings = new ArrayList<>();
-        for (Passenger passenger : this.passengers){
+        ArrayList<Booking> flightbookingsOfCheckInPax = new ArrayList<>();
+        for (Passenger passenger : this.checkedInPassengers){
             for (Booking booking : passenger.bookings){
                 if (booking.getBookingFlightNumber() == this.flightNumber){
-                    flightbookings.add(booking);
+                    flightbookingsOfCheckInPax.add(booking);
                 }
             }
         }
-        return flightbookings.size();
+        return flightbookingsOfCheckInPax.size();
+    }
+
+    public int checkFlightBookings2(){
+        ArrayList<Booking> bookings = new ArrayList<>();
+        for (Booking booking : this.flightbookings){
+                if (booking.getBookingFlightNumber() == this.flightNumber){
+                    bookings.add(booking);
+                }
+            }
+        return bookings.size();
     }
 
 

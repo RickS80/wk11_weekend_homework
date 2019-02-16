@@ -28,7 +28,7 @@ public class Passenger {
 
     }
 
-    public void addBooking(Booking booking){
+    public void addBookingToPassenger(Booking booking){
         this.bookings.add(booking);
     }
 

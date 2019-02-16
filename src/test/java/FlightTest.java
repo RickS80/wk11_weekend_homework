@@ -24,7 +24,8 @@ public class FlightTest {
         flight2 = new Flight(plane2, 105, route1);
         passenger = new Passenger("Rick", 2);
         booking = new Booking(passenger.getName(), 109,"Rome", 2);
-        passenger.addBooking(booking);
+        passenger.addBookingToPassenger(booking);
+        flight.addBookingToFlight(booking);
 
     }
 
@@ -92,6 +93,8 @@ public class FlightTest {
         flight.checkInPassenger(passenger);
         assertEquals(1,flight.checkFlightBookings());
     }
+
+
 
 
 
