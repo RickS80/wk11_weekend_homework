@@ -2,21 +2,23 @@ import java.util.ArrayList;
 
 public class Airline {
 
-    private String name;
+    private String airlineName;
     private ArrayList<Flight> flights;
     private ArrayList<Plane> fleet;
+    private ArrayList<Booking> bookings;
 
 
 
     public Airline(String name){
-        this.name = name;
+        this.airlineName = name;
         this.flights = new ArrayList<>();
         this.fleet = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
 
     public String getAirlineName(){
-        return this.name;
+        return this.airlineName;
     }
 
     public void createFlight(Flight flight){
@@ -50,6 +52,26 @@ public class Airline {
             }
         }
         return acceptablePlanes;
+    }
+
+    public String mostSuitablePlane(Route route){
+        PlaneType mostSuitablePlane = PlaneType.AIRBUSA380;
+        ArrayList<PlaneType> shortlistedPlanes = this.checkWhichAircraftMeetsRange(route);
+            for (PlaneType individualPlane : shortlistedPlanes){
+                if (individualPlane.getRangeFromEnum() < mostSuitablePlane.getRangeFromEnum()){
+                    mostSuitablePlane = individualPlane;
+                }
+            }
+            return mostSuitablePlane.name();
+    }
+
+    public void addBooking(Booking booking){
+        for (Flight flight : this.flights){
+            if (flight.getFlightNumber() == booking.getBookingFlightNumber()){
+                flight.addBookingToFlight(booking);
+                this.bookings.add(booking);
+            }
+        }
     }
 
 

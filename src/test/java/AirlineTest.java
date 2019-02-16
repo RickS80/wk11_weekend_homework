@@ -67,4 +67,10 @@ public class AirlineTest {
         airline.populateFleet();
         assertEquals(largePlanes, airline.checkWhichAircraftMeetsRange(route1));
     }
+
+    @Test
+    public void findMostSuitablePlaneForRoute(){
+        airline.populateFleet();
+        assertEquals("AIRBUSA350", airline.mostSuitablePlane(route1));
+    }
 }
